@@ -1,4 +1,4 @@
-package seleniumassignment1;
+package selebiumassignment3;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -7,20 +7,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class FindElementsTest {
-    public static void main(String[] args) {
+public class AlertTest {
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver;
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("https://parabank.parasoft.com");
+        driver.get("https://demoqa.com/alerts");
         driver.manage().window().maximize();
-        driver.findElement(By.name("username")).sendKeys("Tonny");
-        driver.findElement(By.name("password")).sendKeys("1234ab");
-        driver.findElement(By.cssSelector("input.button")).click();
         System.out.println(driver.getTitle());
         System.out.println(driver.getCurrentUrl());
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-        // Thread.sleep(600);
+        driver.findElement(By.id("alertButton")).click();
+        driver.switchTo().alert().accept();
+        //Confirmation
+        driver.findElement(By.id("confirmButton")).click();
+        Thread.sleep(2000);
+        driver.switchTo().alert().dismiss();
 
     }
 }

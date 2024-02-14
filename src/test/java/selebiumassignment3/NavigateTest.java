@@ -1,26 +1,27 @@
-package seleniumassignment1;
+package selebiumassignment3;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class FindElementsTest {
-    public static void main(String[] args) {
+public class NavigateTest {
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver;
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("https://parabank.parasoft.com");
+        driver.get("https://demo.guru99.com/test/newtours/register.php?authuser=0");
         driver.manage().window().maximize();
-        driver.findElement(By.name("username")).sendKeys("Tonny");
-        driver.findElement(By.name("password")).sendKeys("1234ab");
-        driver.findElement(By.cssSelector("input.button")).click();
         System.out.println(driver.getTitle());
         System.out.println(driver.getCurrentUrl());
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-        // Thread.sleep(600);
+        driver.navigate().to("https://www.saucedemo.com/");
+        Thread.sleep(2000);
+        driver.navigate().back();
+        Thread.sleep(2000);
+        driver.navigate().refresh();
+        Thread.sleep(2000);
 
     }
 }
